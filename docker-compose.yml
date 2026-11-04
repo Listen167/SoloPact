@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: receivables_radar
+      POSTGRES_USER: radar
+      POSTGRES_PASSWORD: radar
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U radar -d receivables_radar"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    environment:
+      APP_ENV: production
+      DEMO_TODAY: "2026-11-04"
+      DATABASE_URL: postgresql+psycopg://radar:radar@db:5432/receivables_radar
+      LOCAL_STORAGE_PATH: /app/storage
+      CORS_ORIGINS: http://localhost:8080
+    env_file:
+      - path: .env
+        required: false
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - app_storage:/app/storage
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  app_storage:
+
