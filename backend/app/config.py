@@ -9,7 +9,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    app_name: str = "回款雷达 Agent"
+    app_name: str = "SoloPact"
     app_env: str = "development"
     api_prefix: str = "/api"
     database_url: str = "sqlite:///./receivables_radar.db"

@@ -6,7 +6,7 @@ param(
 $ErrorActionPreference = "Stop"
 $workspace = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $stamp = Get-Date -Format "yyyyMMdd-HHmmss"
-$packageName = "ReceivablesRadar+$TeamName+$Version+$stamp"
+$packageName = "SoloPact+$TeamName+$Version+$stamp"
 $packageRoot = Join-Path $workspace "output\$packageName"
 
 New-Item -ItemType Directory -Path $packageRoot -Force | Out-Null

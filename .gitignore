@@ -16,4 +16,7 @@ output/
 .playwright-cli/
 .codeartsdoer/
 *.log
+.agents/
+.claude
+agent/
 

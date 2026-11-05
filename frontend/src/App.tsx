@@ -58,8 +58,8 @@ function Shell() {
         <div className="brand">
           <span className="brand-mark"><RadarChartOutlined /></span>
           <span className="brand-text">
-            <strong>回款雷达</strong>
-            <small>Receivables Agent</small>
+            <strong>SoloPact</strong>
+            <small>Business Operations Agent</small>
           </span>
         </div>
         <Menu
